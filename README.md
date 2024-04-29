@@ -1,2 +1,3 @@
 # RDProject
-Using Lexical And Similarity And LLMs
+A simple ontology alignment framework in python: using lexical
+similarity and LLMs.
