@@ -9,17 +9,19 @@ from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.neighbors import NearestNeighbors
 
 
-def get_list_of_labels_from_owl_file(owl_path):
+def get_list_of_iris_and_labels_from_owl_file(owl_path):
     onto = get_ontology("file://" + owl_path).load()
-    list_of_labels = []
+    list_of_iris_labels = []
+
 
     for obj in onto.classes():
+
         if hasattr(obj, "label"):
             labels = obj.label
             for label in labels:
-                list_of_labels.append(label)
+                list_of_iris_labels.append((obj.iri,label))
 
-    return list_of_labels
+    return list_of_iris_labels
 
 
 def get_model_for_embedding(model_name):
@@ -36,7 +38,7 @@ def create_embedding_file_from_owl_file(owl_path, npy_file_name):
 
     print("Started To List The Labels")
 
-    list_of_labels = get_list_of_labels_from_owl_file(owl_path)
+    list_of_iris_labels = get_list_of_iris_and_labels_from_owl_file(owl_path)
 
     print("Started To Get The Model And Tokenizer")
 
@@ -46,7 +48,7 @@ def create_embedding_file_from_owl_file(owl_path, npy_file_name):
 
     print("Started To Tokenize The Labels")
 
-    tokenized_labels = [tokenizer(lbl, return_tensors="pt") for lbl in list_of_labels]
+    tokenized_labels = [tokenizer(lbl[1], return_tensors="pt") for lbl in list_of_iris_labels]
 
     print("Start The Embedding")
 
@@ -55,13 +57,32 @@ def create_embedding_file_from_owl_file(owl_path, npy_file_name):
 
     averaged_embeddings = [torch.mean(embedding, dim=0) for embedding in embeddings]
 
-    np.save(npy_file_name, averaged_embeddings)
+    # Save IRIs, labels, and embeddings
+    data = [{"iris": lbl[0], "labels": lbl[1], "embeddings": averaged_embeddings} for lbl in list_of_iris_labels]
+    np.save(npy_file_name, data)
 
     finish_time = datetime.now()
 
     print("Embedding Ended in: " + str((finish_time - start_time).total_seconds()))
 
 
-def get_average_embeddings_from_npy_file(npy_path):
-    return np.load(npy_path)
+def get_data_from_npy_file(npy_path):
+
+    list_of_iris = []
+    list_of_labels = []
+    list_of_embeddings = []
+    list_of_everything = []
+
+    data = np.load(npy_path, allow_pickle=True)
+
+    for entry in data:
+
+        list_of_iris.append(entry['iris'])
+        list_of_labels.append(entry['labels'])
+        list_of_embeddings.append(entry['embeddings'])
+        # list_of_everything.append(entry)
+
+    return list_of_iris, list_of_labels, list_of_embeddings #, list_of_everything
+
+    
 

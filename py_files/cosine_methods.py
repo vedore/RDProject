@@ -6,7 +6,7 @@ def compare_embeddings_cosine_nearest_neighbor(embeddings):
     similarity_scores = []
 
     # Initialize Nearest Neighbors model
-    nbrs = NearestNeighbors(n_neighbors=10, algorithm='auto', metric='cosine').fit(embeddings)
+    nbrs = NearestNeighbors(n_neighbors=5, algorithm='auto', metric='cosine').fit(embeddings)
 
     for i in range(len(embeddings)):
         # Find nearest neighbors for each embedding
