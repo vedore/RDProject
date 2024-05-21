@@ -5,12 +5,15 @@ from sklearn.neighbors import NearestNeighbors
 def compare_embeddings_cosine_nearest_neighbor(embeddings):
     similarity_scores = []
 
-    # Initialize Nearest Neighbors model
-    nbrs = NearestNeighbors(n_neighbors=5, algorithm='auto', metric='cosine').fit(embeddings)
+    # Convert embeddings to uint8
+    embeddings_uint8 = [np.array(embedding * 255, dtype=np.uint8) for embedding in embeddings]
 
-    for i in range(len(embeddings)):
+    # Initialize Nearest Neighbors model
+    nbrs = NearestNeighbors(n_neighbors=10, algorithm='auto', metric='cosine').fit(embeddings_uint8)
+
+    for i in range(len(embeddings_uint8)):
         # Find nearest neighbors for each embedding
-        distances, indices = nbrs.kneighbors([embeddings[i]])
+        distances, indices = nbrs.kneighbors([embeddings_uint8[i]])
         
         # Compute average cosine similarity with nearest neighbors
         avg_similarity = np.mean(1 - distances)
