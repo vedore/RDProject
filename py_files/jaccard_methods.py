@@ -1,3 +1,5 @@
+import numpy as np
+
 # Computes the Jaccard similarity between two labels
 def calculate_jaccard_similarity_between_labels(label1, label2):
 
@@ -18,11 +20,14 @@ def calculate_jaccard_similarity_between_labels(label1, label2):
 
 # Computes the Jaccard similarity scores between all pairs of labels in a list
 def compare_labels_jaccard(labels):
-    similarity_scores = []
+    num_labels = len(labels)
+    similarity_matrix = np.zeros((num_labels, num_labels))
 
-    for i in range(len(labels)):
-        for j in range(i + 1, len(labels)):
-            similarity = calculate_jaccard_similarity_between_labels(labels[i], labels[j])
-            similarity_scores.append(similarity)
+    for i in range(num_labels):
+        for j in range(num_labels):
+            if i == j:
+                similarity_matrix[i][j] = 1.0  # A label is always similar to itself
+            else:
+                similarity_matrix[i][j] = calculate_jaccard_similarity_between_labels(labels[i], labels[j])
 
-    return similarity_scores
+    return similarity_matrix

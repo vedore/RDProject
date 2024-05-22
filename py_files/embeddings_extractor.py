@@ -13,15 +13,14 @@ def get_list_of_iris_and_labels_from_owl_file(owl_path):
     onto = get_ontology("file://" + owl_path).load()
     list_of_iris_labels = []
 
-
     for obj in onto.classes():
-
         if hasattr(obj, "label"):
             labels = obj.label
             for label in labels:
-                list_of_iris_labels.append((obj.iri,label))
+                list_of_iris_labels.append((obj.iri, label))
 
     return list_of_iris_labels
+
 
 
 def get_model_for_embedding(model_name):
@@ -32,13 +31,16 @@ def get_tokenizer_for_embedding(model_name):
     return BertTokenizer.from_pretrained(model_name)
 
 
-def create_embedding_file_from_owl_file(owl_path, npy_file_name):
-        
+def create_embedding_file_from_owl_file(owl_path, npy_file_name, iris_label_file_name):
     start_time = datetime.now()
 
     print("Started To List The Labels")
 
     list_of_iris_labels = get_list_of_iris_and_labels_from_owl_file(owl_path)
+
+    # Save IRIs and labels separately
+    iris_label_data = [{"iris": lbl[0], "label": lbl[1]} for lbl in list_of_iris_labels]
+    np.save(iris_label_file_name, iris_label_data)
 
     print("Started To Get The Model And Tokenizer")
 
@@ -57,32 +59,22 @@ def create_embedding_file_from_owl_file(owl_path, npy_file_name):
 
     averaged_embeddings = [torch.mean(embedding, dim=0) for embedding in embeddings]
 
-    # Save IRIs, labels, and embeddings
-    data = [{"iris": lbl[0], "labels": lbl[1], "embeddings": averaged_embeddings} for lbl in list_of_iris_labels]
-    np.save(npy_file_name, data)
+    # Save embeddings separately
+    np.save(npy_file_name, averaged_embeddings)
 
     finish_time = datetime.now()
 
     print("Embedding Ended in: " + str((finish_time - start_time).total_seconds()))
 
 
-def get_data_from_npy_file(npy_path):
+def get_data_from_npy_file(npy_path, iris_label_path):
+    iris_label_data = np.load(iris_label_path, allow_pickle=True)
+    embeddings = np.load(npy_path, allow_pickle=True)
 
-    list_of_iris = []
-    list_of_labels = []
-    list_of_embeddings = []
-    list_of_everything = []
+    list_of_iris = [entry['iris'] for entry in iris_label_data]
+    list_of_labels = [entry['label'] for entry in iris_label_data]
 
-    data = np.load(npy_path, allow_pickle=True)
-
-    for entry in data:
-
-        list_of_iris.append(entry['iris'])
-        list_of_labels.append(entry['labels'])
-        list_of_embeddings.append(entry['embeddings'])
-        # list_of_everything.append(entry)
-
-    return list_of_iris, list_of_labels, list_of_embeddings #, list_of_everything
+    return list_of_iris, list_of_labels, embeddings
 
     
 
