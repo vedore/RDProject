@@ -3,6 +3,7 @@ import torch
 from py_files.cosine_methods import compare_embeddings_cosine_nearest_neighbor
 from py_files.embeddings_extractor import create_embedding_file_from_owl_file, get_data_from_npy_file
 from py_files.jaccard_methods import compare_labels_jaccard
+import pandas as pd
 
 
 def compute_average_similarities(jaccard_scores, cosine_scores):
@@ -34,6 +35,10 @@ def project_class(embeddings_file, iris_label_file):
 
     return jaccard_similarity_matrix, cosine_similarity_matrix, iris, labels
 
+def display_similarity_matrix(similarity_matrix, labels):
+    df = pd.DataFrame(similarity_matrix, index=labels, columns=labels)
+    print(df)
+
 def main():
     print("Human Ontology Process:\n")
     human_jaccard_matrix, human_cosine_matrix, human_iris, human_labels = project_class(
@@ -54,8 +59,13 @@ def main():
     combined_scores_human = compute_average_similarities(human_jaccard_matrix, human_cosine_matrix)
     combined_scores_mouse = compute_average_similarities(mouse_jaccard_matrix, mouse_cosine_matrix)
 
-    print("Human Combined Scores:\n", combined_scores_human)
-    print("Mouse Combined Scores:\n", combined_scores_mouse)
+    #print("Human Combined Scores:\n", combined_scores_human)
+    #print("Mouse Combined Scores:\n", combined_scores_mouse)
+
+    print("Human Combined Scores:\n")
+    display_similarity_matrix(combined_scores_human, human_labels)
+    print("\nMouse Combined Scores:\n")
+    display_similarity_matrix(combined_scores_mouse, mouse_labels)
     
 def create_embeddings_files():
     create_embedding_file_from_owl_file(
@@ -71,7 +81,7 @@ def create_embeddings_files():
 
 
 ## Create the Embeddings
-# create_embeddings_files()
+#create_embeddings_files()
 
 ## Run the Program
 main()
