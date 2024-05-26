@@ -71,7 +71,7 @@ def create_embeddings_files():
 
 
 ## Create the Embeddings
-create_embeddings_files()
+# create_embeddings_files()
 
 ## Run the Program
 main()
