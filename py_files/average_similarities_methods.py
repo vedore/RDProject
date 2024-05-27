@@ -1,14 +1,14 @@
-def compute_average_similarities(human_results, mouse_results):
+def compute_average_similarities(jaccard_matrix, cosine_matrix):
     combined_scores = []
 
-    for human, mouse in zip(human_results, mouse_results):
-        assert human["IRI:source"] == mouse["IRI:source"], "IRIs must match for averaging"
-        assert human["label:source"] == mouse["label:source"], "Labels must match for averaging"
+    for jaccard, cosine in zip(jaccard_matrix, cosine_matrix):
+        assert jaccard["IRI:source"] == cosine["IRI:source"], "IRIs must match for averaging"
+        assert jaccard["label:source"] == cosine["label:source"], "Labels must match for averaging"
 
-        avg_similarity = (human["jaccard_score"] + mouse["cosine_score"]) / 2
+        avg_similarity = (jaccard["jaccard_score"] + cosine["cosine_score"]) / 2
         combined_scores.append({
-            "IRI:source": human["IRI:source"],
-            "label:source": human["label:source"],
+            "IRI:source": jaccard["IRI:source"],
+            "label:source": jaccard["label:source"],
             "average_similarity": avg_similarity
         })
 
