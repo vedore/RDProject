@@ -54,7 +54,7 @@ def prepare_data(human_embeddings, human_labels, mouse_embeddings, mouse_labels)
 
 
 def train_random_forest(X_train, y_train):
-    rf = RandomForestClassifier(n_estimators=1, random_state=42)
+    rf = RandomForestClassifier(n_estimators=10,  min_samples_split=4, min_samples_leaf=2, max_depth=5, random_state=42)
     rf.fit(X_train, y_train)
     return rf
 
