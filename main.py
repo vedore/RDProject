@@ -21,19 +21,18 @@ def compute_average_lexical_similarities(jaccard_scores):
 def compute_average_embedding_similarities(cosine_scores):
     return sum(cosine_scores) / len(cosine_scores)
 
+def project_combined_class(human_iris, human_labels, human_embeddings, mouse_iris, mouse_labels, mouse_embeddings):
+    combined_iris = human_iris + mouse_iris
+    combined_labels = human_labels + mouse_labels
+    combined_embeddings = np.concatenate((human_embeddings, mouse_embeddings), axis=0)
 
-def project_class(embeddings_file, iris_label_file):
-    iris, labels, average_embeddings = get_data_from_npy_file(embeddings_file, iris_label_file)
+    print("Combined Jaccard Similarity Step")
+    combined_jaccard_similarity_matrix = compare_labels_jaccard(combined_labels)
 
-    # Calculate Jaccard similarity scores for labels
-    print("Jaccard Similarity Step")
-    jaccard_similarity_matrix = compare_labels_jaccard(labels)
+    print("Combined Cosine Similarity Step")
+    combined_cosine_similarity_matrix = compare_embeddings_cosine_nearest_neighbor(combined_embeddings)
 
-    # Calculate cosine similarity scores for embeddings
-    print("Cosine Similarity Step")
-    cosine_similarity_matrix = compare_embeddings_cosine_nearest_neighbor(average_embeddings)
-
-    return jaccard_similarity_matrix, cosine_similarity_matrix, iris, labels
+    return combined_jaccard_similarity_matrix, combined_cosine_similarity_matrix, combined_iris, combined_labels
 
 def display_similarity_matrix(similarity_matrix, labels):
     df = pd.DataFrame(similarity_matrix, index=labels, columns=labels)
@@ -41,31 +40,27 @@ def display_similarity_matrix(similarity_matrix, labels):
 
 def main():
     print("Human Ontology Process:\n")
-    human_jaccard_matrix, human_cosine_matrix, human_iris, human_labels = project_class(
-        embeddings_file="embeddings/human_embeddings.npy",
-        iris_label_file="embeddings/human_iris_labels.npy"
+    human_iris, human_labels, human_embeddings = get_data_from_npy_file(
+        "embeddings/human_embeddings.npy",
+        "embeddings/human_iris_labels.npy"
     )
 
     print("Mouse Ontology Process:\n")
-    mouse_jaccard_matrix, mouse_cosine_matrix, mouse_iris, mouse_labels = project_class(
-        embeddings_file="embeddings/mouse_embeddings.npy",
-        iris_label_file="embeddings/mouse_iris_labels.npy"
+    mouse_iris, mouse_labels, mouse_embeddings = get_data_from_npy_file(
+        "embeddings/mouse_embeddings.npy",
+        "embeddings/mouse_iris_labels.npy"
     )
 
-    # Ensure that both matrices have the same shape
-    assert human_jaccard_matrix.shape == human_cosine_matrix.shape, "Human matrices must have the same shape."
-    assert mouse_jaccard_matrix.shape == mouse_cosine_matrix.shape, "Mouse matrices must have the same shape."
+    combined_jaccard_matrix, combined_cosine_matrix, combined_iris, combined_labels = project_combined_class(
+        human_iris, human_labels, human_embeddings, mouse_iris, mouse_labels, mouse_embeddings
+    )
 
-    combined_scores_human = compute_average_similarities(human_jaccard_matrix, human_cosine_matrix)
-    combined_scores_mouse = compute_average_similarities(mouse_jaccard_matrix, mouse_cosine_matrix)
+    assert combined_jaccard_matrix.shape == combined_cosine_matrix.shape, "Combined matrices must have the same shape."
 
-    #print("Human Combined Scores:\n", combined_scores_human)
-    #print("Mouse Combined Scores:\n", combined_scores_mouse)
+    combined_scores = compute_average_similarities(combined_jaccard_matrix, combined_cosine_matrix)
 
-    print("Human Combined Scores:\n")
-    display_similarity_matrix(combined_scores_human, human_labels)
-    print("\nMouse Combined Scores:\n")
-    display_similarity_matrix(combined_scores_mouse, mouse_labels)
+    print("Combined Scores:\n")
+    display_similarity_matrix(combined_scores, combined_labels)
     
 def create_embeddings_files():
     create_embedding_file_from_owl_file(
