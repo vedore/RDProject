@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#cheek">
+    <rdf:type>cheek</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#geniohyoid">
+    <rdf:type>geniohyoid</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#mylohyoid">
+    <rdf:type>mylohyoid</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#pectineus">
+    <rdf:type>pectineus</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#splenius">
+    <rdf:type>splenius</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#cleidocephalic">
+    <rdf:type>cleidocephalic</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#subiculum">
+    <rdf:type>subiculum</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#ulna">
+    <rdf:type>ulna</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#sternum">
+    <rdf:type>sternum</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#pupil">
+    <rdf:type>pupil</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#ischiocavernosus">
+    <rdf:type>ischiocavernosus</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#malleus">
+    <rdf:type>malleus</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#gracilis">
+    <rdf:type>gracilis</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#putamen">
+    <rdf:type>putamen</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#cleidobrachial">
+    <rdf:type>cleidobrachial</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#sternooccipital">
+    <rdf:type>sternooccipital</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#tear">
+    <rdf:type>tear</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#fibula">
+    <rdf:type>fibula</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#omotransverse">
+    <rdf:type>omotransverse</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#cleidooccipital">
+    <rdf:type>cleidooccipital</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#cementum">
+    <rdf:type>cementum</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#stapes">
+    <rdf:type>stapes</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#styloglossus">
+    <rdf:type>styloglossus</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#semimembranosus">
+    <rdf:type>semimembranosus</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#supraspinatus">
+    <rdf:type>supraspinatus</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#colostrum">
+    <rdf:type>colostrum</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#ilium">
+    <rdf:type>ilium</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#iliacus">
+    <rdf:type>iliacus</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#femur">
+    <rdf:type>femur</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#enamel">
+    <rdf:type>enamel</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#dentin">
+    <rdf:type>dentin</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#incus">
+    <rdf:type>incus</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#face">
+    <rdf:type>face</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#eyelash">
+    <rdf:type>eyelash</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#acetabulum">
+    <rdf:type>acetabulum</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#omohyoid">
+    <rdf:type>omohyoid</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#semitendinosus">
+    <rdf:type>semitendinosus</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#maxilla">
+    <rdf:type>maxilla</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#thyrohyoid">
+    <rdf:type>thyrohyoid</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#sweat">
+    <rdf:type>sweat</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#brachialis">
+    <rdf:type>brachialis</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#bulboglandular">
+    <rdf:type>bulboglandular</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#endolymph">
+    <rdf:type>endolymph</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#jejunum">
+    <rdf:type>jejunum</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#patella">
+    <rdf:type>patella</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#humerus">
+    <rdf:type>humerus</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#deltoid">
+    <rdf:type>deltoid</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#sternohyoid">
+    <rdf:type>sternohyoid</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#epididymis">
+    <rdf:type>epididymis</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#claustrum">
+    <rdf:type>claustrum</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#perilymph">
+    <rdf:type>perilymph</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#iliothoracic">
+    <rdf:type>iliothoracic</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#tibia">
+    <rdf:type>tibia</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#genioglossus">
+    <rdf:type>genioglossus</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#fibrocartilage">
+    <rdf:type>fibrocartilage</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#infraspinatus">
+    <rdf:type>infraspinatus</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#sternothyroid">
+    <rdf:type>sternothyroid</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#epithalamus">
+    <rdf:type>epithalamus</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#labium">
+    <rdf:type>labium</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#buccinator">
+    <rdf:type>buccinator</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#urethralis">
+    <rdf:type>urethralis</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#otolymph">
+    <rdf:type>otolymph</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#soleus">
+    <rdf:type>soleus</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#nipple">
+    <rdf:type>nipple</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#nose">
+    <rdf:type>nose</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#subscapularis">
+    <rdf:type>subscapularis</rdf:type>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://RedesDeConhimento.org/ontology#parotidoauricular">
+    <rdf:type>parotidoauricular</rdf:type>
+  </rdf:Description>
+</rdf:RDF>
