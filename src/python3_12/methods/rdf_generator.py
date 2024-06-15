@@ -5,6 +5,8 @@ from rdflib.namespace import RDF, RDFS
 def generate_rdf_from_similarity(combined_similarity_matrix, labels1, labels2, threshold, output_file, rdf_format='xml'):
     similar_pairs = []
 
+    simlarity_score = 0
+
     # Iterate through the combined similarity matrix
     for i in range(combined_similarity_matrix.shape[0]):
         for j in range(combined_similarity_matrix.shape[1]):
@@ -12,7 +14,10 @@ def generate_rdf_from_similarity(combined_similarity_matrix, labels1, labels2, t
 
             # Check if the similarity score exceeds the threshold
             if similarity_score >= threshold:
+
+                print((labels1[i], labels2[j]), similarity_score)
                 similar_pairs.append((labels1[i], labels2[j]))
+
 
     # Create an RDF graph
     graph = Graph()
@@ -23,7 +28,7 @@ def generate_rdf_from_similarity(combined_similarity_matrix, labels1, labels2, t
     # Add triples to the graph
     for label1, label2 in similar_pairs:
         # Create URIRefs for subjects and predicates
-        uri_part, additional_info = label1.split(' ')
+        uri_part = label1
         subject = URIRef(ns[uri_part])
         predicate = URIRef(RDF.type)  # You can use appropriate predicates here
         obj = Literal(label2)

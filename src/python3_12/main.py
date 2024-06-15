@@ -14,10 +14,10 @@ def compare_ontologies(first_owl_path, second_owl_path):
     first_list_of_classes = get_content_from_owl_file(owl_path=first_owl_path)
     second_list_of_classes = get_content_from_owl_file(owl_path=second_owl_path)
 
-    first_labels_lower = [' '.join(str(label).lower() for label in labels) for iri, labels in first_list_of_classes]
+    first_labels_lower = [''.join(str(label).lower() for label in labels) for iri, labels in first_list_of_classes]
 
     # print("Second Label")
-    second_labels_lower = [' '.join(str(label).lower() for label in labels) for iri, labels in second_list_of_classes]
+    second_labels_lower = [''.join(str(label).lower() for label in labels) for iri, labels in second_list_of_classes]
 
     lexical_similarity = compute_lexical_similarity(first_labels_lower, second_labels_lower)
 
@@ -33,9 +33,7 @@ def compare_ontologies(first_owl_path, second_owl_path):
 
     # rdf could have nothing if threshold to low
     rdf_triplet = generate_rdf_from_similarity(combined_similarity, first_labels_lower,
-                                               second_labels_lower, 0.5, "rdf_file.rdf")
-
-    print(rdf_triplet)
+                                               second_labels_lower, 0.8, "rdf_file.rdf")
 
     # alignment_pairs = get_alignment_pairs(combined_similarity)
 
