@@ -14,14 +14,14 @@ def compare_ontologies(first_owl_path, second_owl_path):
     first_list_of_classes = get_content_from_owl_file(owl_path=first_owl_path)
     second_list_of_classes = get_content_from_owl_file(owl_path=second_owl_path)
 
-    first_labels_lower = [''.join(str(label).lower() for label in labels) for iri, labels in first_list_of_classes]
+    # -> first_labels_lower = [''.join(str(label).lower() for label in labels) for iri, labels in first_list_of_classes]
 
     # print("Second Label")
-    second_labels_lower = [''.join(str(label).lower() for label in labels) for iri, labels in second_list_of_classes]
+    # -> second_labels_lower = [''.join(str(label).lower() for label in labels) for iri, labels in second_list_of_classes]
 
-    lexical_similarity = compute_lexical_similarity(first_labels_lower, second_labels_lower)
+    # -> lexical_similarity = compute_lexical_similarity(first_labels_lower, second_labels_lower)
 
-    semantic_similarity = compute_semantic_similarity(first_labels_lower, second_labels_lower)
+    # -> semantic_similarity = compute_semantic_similarity(first_labels_lower, second_labels_lower)
 
     # High alpha means that the combined similarity will rely more heavily on the lexical similarity.
     # This is useful when the textual content and term frequency are more important for your comparison.
@@ -29,11 +29,11 @@ def compare_ontologies(first_owl_path, second_owl_path):
     # Low alpha means that the combined similarity will rely more heavily on the semantic similarity.
     # For instance, if This is useful when the structure and presence of terms are more important.
 
-    combined_similarity = combine_similarities(lexical_similarity, semantic_similarity, alpha=0.5)
+    # -> combined_similarity = combine_similarities(lexical_similarity, semantic_similarity, alpha=0.5)
 
     # rdf could have nothing if threshold to low
-    rdf_triplet = generate_rdf_from_similarity(combined_similarity, first_labels_lower,
-                                               second_labels_lower, 0.8, "rdf_file.rdf")
+    # -> rdf_triplet = generate_rdf_from_similarity(combined_similarity, first_labels_lower,
+    # ->                                            second_labels_lower, 0.8, "rdf_file.rdf")
 
     # alignment_pairs = get_alignment_pairs(combined_similarity)
 

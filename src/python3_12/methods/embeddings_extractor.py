@@ -12,6 +12,7 @@ def get_content_from_owl_file(owl_path):
     for cls in onto.classes():
 
         list_of_labels = []
+        list_of_synonyms = []
 
         # Get the IRI of the class
         iri = cls.iri
@@ -20,6 +21,11 @@ def get_content_from_owl_file(owl_path):
         if hasattr(cls, "label"):
             for lbl in cls.label:
                 list_of_labels.append(lbl)
+
+        if hasattr(cls, "hasRelatedSynonym"):
+            for syn in cls.hasRelatedSynonym:
+                print(syn)
+                list_of_synonyms.append(syn)
 
         list_of_classes.append((iri, list_of_labels))
 
